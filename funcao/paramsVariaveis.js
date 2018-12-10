@@ -9,7 +9,6 @@ function soma() {
 console.log(soma())
 console.log(soma(1))
 console.log(soma(1.1, 2.2, 3.3))
-
 console.log(soma(1.1, 2.2, "Teste"))
-
 console.log(soma)
+
