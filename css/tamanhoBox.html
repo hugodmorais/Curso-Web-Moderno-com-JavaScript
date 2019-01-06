@@ -4,8 +4,24 @@
     <meta charset="UTF-8">
     <title>Tamanho Box</title>
     <style>
+        * {
+            box-sizing: border-box; /* Seria a forma de colocar esta propriedade de uma forma universal, se colocar no body não vai funcionar de 
+            forma universal pois esta propriedade não é herdada naturalmente */
+        }
         body {
             font-size: 45px;
+            margin: 0;
+        }
+
+        div {
+            background-color: deepskyblue;
+            width: 100%;
+            height: 300px;
+            padding: 100px;
+            border: solid 20px;
+            box-sizing: border-box;/*O border-box fará com que os 100% de largura sejam o da pagina, incluindo
+            o border e o conteudo, caso utiliza-se content-box, os 100% seriam o total da página mais 
+            o tamanho do border mais o tamanho do conteudo, iria surgir uma scroll bar. */
         }
     </style>
 </head>
