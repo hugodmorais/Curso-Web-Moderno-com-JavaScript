@@ -12,14 +12,30 @@
     <h1>Modificando HTML #03</h1>
     <div id='conteudo'></div>
 
-    <script>
-        const pessoas = [
+    <script>        
+        $(document).ready(function() {// assim que a DOM estiver pronta ele executa --importante--
+        // A callback para executar quando a DOM estiver pronta pode ser mais reduzida,  efeito é o mesmo
+        // $(function() { } -> Pode ser feito desta forma também
+            const pessoas = [
             { nome: 'Ana', nota: 9.1 },
             { nome: 'Bianca', nota: 8.4 },
             { nome: 'Carlos', nota: 7.6 },
             { nome: 'Julia', nota: 9.7 }
-        ]
+            ]
+
+            const linhas = pessoas.map(p => {// Faz um map e a seguir cria o campo data
+                const tdNome = $('<td>').html(p.nome)
+                    .css('border', 'solid 5px')
+                const tdNota = $('<td>').html(p.nota)
+                    .css('border', 'solid 5px')
+                return $('<tr>').append(tdNome).append(tdNota)
+            })
+
+            const tabela = $('<table>').append(linhas)
+                .css('border', 'solid 5px')
+
+            $('#conteudo').append(tabela)
+        })
         
-        // ...
     </script>
 </body>
