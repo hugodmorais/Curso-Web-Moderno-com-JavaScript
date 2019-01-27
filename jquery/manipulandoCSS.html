@@ -15,6 +15,25 @@
     <div id='div3'>3</div>
     <div id='resultado'></div>
     <script>
-        // ...
+        const fonte = $('#div1').css('font-family')// Pega a fonte que está a ser usada na div1, neste caso -> Oswald, sans-serif
+        console.log(fonte)
+        $('#resultado').append(`Fonte é ${fonte}`)
+
+        $('#div1').css('font-size', '3em')
+        $('#div1').css({ 'font-size': '3.5em', 'color': 'yellow' })
+        $('#div1').css('font-size', function () {
+            return `${2 * 2}em`
+        })
+
+        $('#div2').addClass('destaque')
+
+        const temClasse = $('#div2').hasClass('destaque')
+        $('#resultado').append(`<br>Tem class? ${temClasse}`)
+
+        $('#div2').removeClass('destaque')
+        $('#div2').toggleClass('destaque')
+        $('#div2').toogleClass('destaque')
+        
+        
     </script>
 </body>

@@ -55,5 +55,8 @@
         }
 
         $('[wm-relogio]').each((i, e) => new Relogio(e))
+
+        $('[wm-relogio]').attr({ opa: 1, novo: true })// adiciona atributos neste caso à div
+        $('[wm-relogio]').removeAttr('opa')// Remove o atributo
     </script>
 </body>
