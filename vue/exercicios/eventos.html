@@ -7,9 +7,46 @@
     <script src="/js/vue.min.js"></script>
 </head>
 <body class="exercicio">
-
+    <div id="app">
+        <p>{{ contador }}</p>
+        <p>
+            <button v-on:click="add">+1</button>
+            <button @click="less">-2</button><!-- v-on:click === @click -->
+        </p>
+        <p @mousemove=atualizarPosicao>
+            Coordenadas: {{ x }} e {{ y }}
+            <span @mousemove.stop>Aqui Não</span><!-- @mousemove.stop faz a mesma funçao de @mousemove="stop", porém este precisa de uma função-->
+            <span @mousemove="stop">Aqui também Não</span>
+        </p>
+        <input type="text" @keyup.enter="alerta">
+    </div>
     <script>
-        // ...
+        new Vue({
+            el: "#app",
+            data: {
+                x: 0,
+                y: 0,
+                contador: 0
+            },
+            methods: {
+                add() {
+                    this.contador++
+                },
+                less() {
+                    this.contador-=2
+                },
+                atualizarPosicao(e) {
+                    this.x = e.clientX
+                    this.y = e.clientY
+                },
+                stop(e) {
+                    e.stopPropagation()
+                },
+                alerta() {
+                    alert('Enter!')
+                }
+            }
+        })
     </script>
 </body>
 </html>
