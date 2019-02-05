@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Binding</title>
+    <link rel="stylesheet" href="/css/estilo.css">
+    <script src="/js/vue.min.js"></script>
+</head>
+<body class="exercicio">
+    <div id="app">
+        <p>{{ link }}</p>
+        <p><a href="{{ link }}">Canal?</a></p>
+        <p><a v-bind:href="link">Canal</a></p><!--v-bind é uma directiva que o Vue utiliza para manipular e interpolar valores, no caso para
+            ler corretamente o link, não dá por si só para ter acesso ao {{ link }} em cima.-->
+        <p><a :href="link">Canal</a></p><!--Utilizar os dois pontos é a uma outra forma de utilizar o v-bind, uma forma reduzida. -->
+        <p>
+            <input type="text" v-model="nome"><!-- Bidirecional, alterando o input, altera o span através do v-model.-->
+            <span>{{ nome }}</span>
+        </p>
+    </div>
+    <script>
+        new Vue({
+            el: "#app",
+            data: {
+                nome: "Hugo",
+                link: "https://youtube.com/cod3rcursos"
+            },
+            watch: {
+                nome(novoValor) {
+                    console.log(novoValor.toUpperCase())
+                }
+            }
+        })
+    </script>
+</body>
+</html>

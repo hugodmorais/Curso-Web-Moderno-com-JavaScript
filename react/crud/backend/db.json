@@ -1,14 +1,19 @@
 {
   "users": [
     {
-      "name": "Hugo Morais",
-      "email": "hugo@gmail.com",
+      "name": "Hugo",
+      "email": "Morais@gmail.com",
       "id": 1
     },
     {
-      "name": "Daniel Rodrigues",
-      "email": "danirodrigues@gmail.com",
+      "name": "hugo",
+      "email": "morais",
       "id": 2
+    },
+    {
+      "name": "Hugo",
+      "email": "wsfrds",
+      "id": 3
     }
   ]
 }
