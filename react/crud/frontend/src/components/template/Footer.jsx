@@ -3,6 +3,8 @@ import React from 'react'
 
 export default props => 
     <footer className="footer">
-       Rodapé
+       <span>
+           Desenvolvido por <i className="fa fa-clone text-danger"></i> <strong>Hugo Morais</strong>
+       </span>
     </footer>
 
