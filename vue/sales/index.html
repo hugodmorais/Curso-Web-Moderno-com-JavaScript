@@ -9,9 +9,57 @@
 </head>
 
 <body>
-
+    <div id="app">
+        <div class="container">
+            <h1 class="mt-3">{{ title }}</h1>
+            <table class="mt-5 table">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nome</th>
+                        <th>Preço</th>
+                        <th>Quantidade</th>
+                        <th>Data</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr v-for="sale in sales">
+                        <td>{{ sale.id }}</td>
+                        <td>{{ sale.name }}</td>
+                        <td v-money="'R$'">{{ sale.price }}</td>
+                        <td>{{ sale.qtde }}</td>
+                        <td>{{ sale.date }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
     <script>
-        // ...
+        Vue.directive('money', {
+            inserted(el, binding) {
+                const amount = parseFloat(el.innerHTML).toFixed(2)
+                    .replace('.', ',')
+                    .replace(/(\d)(?=(\d{3})+\,)/g, '$1.')
+                el.innerHTML = `${binding.value} ${amount}`
+            }
+        })
+        new Vue({
+            el: '#app',
+            data: {
+                title: 'Relatório de Vendas',
+                sales: null
+            },
+            methods: {
+                getSales() {
+                    fetch('/data/sales.json')
+                        .then(resp => resp.json())
+                        .then(data => this.sales = data)
+                }
+            },
+            mounted() {// Esta função é chamada quando a view instance estiver pronta, mesmo sem template definido
+                this.getSales()
+            }
+        })
     </script>
 </body>
 
